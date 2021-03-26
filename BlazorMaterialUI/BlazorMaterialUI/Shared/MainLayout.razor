@@ -1,0 +1,59 @@
+﻿@inherits LayoutComponentBase
+
+<div class="page">
+	<div class="sidebar">
+		<NavMenu />
+	</div>
+
+	<div class="main">
+		<div class="top-row px-4">
+			@if (_isLightMode)
+			{
+				<MudIconButton Icon="@Icons.Material.Filled.Brightness4" OnClick="@ToggleTheme" />
+			}
+			else
+			{
+				<MudIconButton Icon="@Icons.Material.Filled.Brightness5" OnClick="@ToggleTheme" />
+			}
+		</div>
+
+		<div class="content px-4">
+			@Body
+		</div>
+	</div>
+</div>
+
+<MudThemeProvider Theme="_currentTheme" />
+
+@code {
+	private bool _isLightMode = true;
+	private MudTheme _currentTheme = new MudTheme();
+
+	private void ToggleTheme()
+	{
+		_isLightMode = !_isLightMode;
+
+		if(!_isLightMode)
+		{
+			_currentTheme = GenerateDarkTheme();
+		}
+		else
+		{
+			_currentTheme = new MudTheme();
+		}
+	}
+
+	private MudTheme GenerateDarkTheme() => 
+		new MudTheme
+		{
+			Palette = new Palette()
+			{
+				Black = "#27272f",
+				Background = "#32333d",
+				BackgroundGrey = "#27272f",
+				Surface = "#373740",
+				TextPrimary = "#ffffffb3",
+				TextSecondary = "rgba(255,255,255, 0.50)"
+			}
+		};
+}
