@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMaterialUI", "BlazorMaterialUI\BlazorMaterialUI.csproj", "{4D0F1CC6-B254-41AD-85CF-9CB6C25E3164}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "..\BlazorProducts.Server\Entities\Entities.csproj", "{985144D1-95F3-41DA-9B84-A347937CDFA9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4D0F1CC6-B254-41AD-85CF-9CB6C25E3164}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D0F1CC6-B254-41AD-85CF-9CB6C25E3164}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D0F1CC6-B254-41AD-85CF-9CB6C25E3164}.Release|Any CPU.Build.0 = Release|Any CPU
+		{985144D1-95F3-41DA-9B84-A347937CDFA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{985144D1-95F3-41DA-9B84-A347937CDFA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{985144D1-95F3-41DA-9B84-A347937CDFA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{985144D1-95F3-41DA-9B84-A347937CDFA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

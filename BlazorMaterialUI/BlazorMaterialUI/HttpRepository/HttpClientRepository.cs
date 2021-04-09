@@ -1,0 +1,55 @@
+﻿using BlazorMaterialUI.Features;
+using Entities.Models;
+using Entities.RequestFeatures;
+using Entities.RequestParameters;
+using Microsoft.AspNetCore.WebUtilities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Text.Json;
+using System.Threading.Tasks;
+
+namespace BlazorMaterialUI.HttpRepository
+{
+	public class HttpClientRepository : IHttpClientRepository
+	{
+		private readonly HttpClient _client;
+		private readonly JsonSerializerOptions _options;
+
+		public HttpClientRepository(HttpClient client)
+		{
+			_client = client;
+			_options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+		}
+
+		public async Task<PagingResponse<Product>> GetProducts(ProductParameters productParameters)
+		{
+			var queryStringParam = new Dictionary<string, string>
+			{
+				["pageNumber"] = productParameters.PageNumber.ToString(),
+				["pageSize"] = productParameters.PageSize.ToString(),
+				["searchTerm"] = productParameters.SearchTerm ?? "",
+				["orderBy"] = productParameters.OrderBy ?? "name"
+			};
+
+			using (var response = await _client.GetAsync(QueryHelpers.AddQueryString("products", queryStringParam)))
+			{
+				response.EnsureSuccessStatusCode();
+
+				var metaData = JsonSerializer
+					.Deserialize<MetaData>(response.Headers.GetValues("X-Pagination").First(), _options);
+				
+				var stream = await response.Content.ReadAsStreamAsync();
+
+				var pagingResponse = new PagingResponse<Product>
+				{
+					Items = await JsonSerializer.DeserializeAsync<List<Product>>(stream, _options),
+					MetaData = metaData
+				};
+
+				return pagingResponse;
+			}
+		}
+	}
+}
