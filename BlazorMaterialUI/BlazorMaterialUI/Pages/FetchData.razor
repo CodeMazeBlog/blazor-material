@@ -7,9 +7,9 @@
 	<ToolBarContent>
 		<MudText Typo="Typo.h6">Products</MudText>
 		<MudToolBarSpacer />
-		<MudTextField OnKeyUp="OnSearch" Placeholder="Search" Adornment="Adornment.Start"
+		<MudTextField OnDebounceIntervalElapsed="OnSearch" Placeholder="Search" Adornment="Adornment.Start"
 			AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium"
-			Class="mt-0" @bind-Value="_searchTerm" Immediate="true"></MudTextField>
+			Class="mt-0" T="string" DebounceInterval="500"></MudTextField>
 	</ToolBarContent>
 	<HeaderContent>
 		<MudTh>Image</MudTh>

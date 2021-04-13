@@ -13,8 +13,6 @@ namespace BlazorMaterialUI.Pages
 		private MudTable<Product> _table;
 		private ProductParameters _productParameters = new ProductParameters();
 		private readonly int[] _pageSizeOption = { 4, 6, 10 };
-		private string _searchTerm;
-		private Timer _timer;
 
 		[Inject]
 		public IHttpClientRepository Repository { get; set; }
@@ -37,18 +35,9 @@ namespace BlazorMaterialUI.Pages
 			};
 		}
 
-		private void OnSearch()
+		private void OnSearch(string searchTerm)
 		{
-			if (_timer != null)
-				_timer.Dispose();
-
-			_timer = new Timer(OnTimerElapsed, null, 500, 0);
-		}
-
-		private void OnTimerElapsed(object sender)
-		{
-			_timer.Dispose();
-			_productParameters.SearchTerm = _searchTerm;
+			_productParameters.SearchTerm = searchTerm;
 			_table.ReloadServerData();
 		}
 	}
