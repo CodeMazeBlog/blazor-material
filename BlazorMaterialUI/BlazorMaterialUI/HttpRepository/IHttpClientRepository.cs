@@ -11,5 +11,6 @@ namespace BlazorMaterialUI.HttpRepository
 	public interface IHttpClientRepository
 	{
 		Task<PagingResponse<Product>> GetProducts(ProductParameters productParameters);
+		Task<Product> GetProduct(Guid id);
 	}
 }

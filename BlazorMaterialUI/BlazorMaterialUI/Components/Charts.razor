@@ -1,0 +1,22 @@
+﻿<MudGrid Class="mt-3">
+	<MudItem lg="6" md="6" sm="6">
+		<MudText Typo="Typo.h4">Sales over the last six months</MudText>
+	</MudItem>
+	<MudItem>
+		<MudButton OnClick="SwitchChart" Color="Color.Primary" Variant="Variant.Filled">Switch Chart</MudButton>
+	</MudItem>
+	@if (_lineChartDisplayed)
+	{
+		<MudItem lg="10" sm="12">
+			<MudChart ChartType="ChartType.Line" ChartSeries="_lineChartSeries" XAxisLabels="_chartLabels"
+					  ChartOptions="_lineChartOptions" />
+		</MudItem>
+	}
+	else
+	{
+		<MudItem lg="8" sm="12">
+			<MudChart ChartType="ChartType.Pie" InputData="_pieChartData" InputLabels="_chartLabels"
+					  Width="300px" Height="300px" />
+		</MudItem>
+	}
+</MudGrid>

@@ -12,5 +12,9 @@ namespace Entities.Models
 		public double Price { get; set; }
 		public string ImageUrl { get; set; }
 		public DateTime ManufactureDate { get; set; }
+
+		public ICollection<Review> Reviews { get; set; }
+		public ICollection<QA> QAs { get; set; }
+		public Declaration Declaration { get; set; }
 	}
 }

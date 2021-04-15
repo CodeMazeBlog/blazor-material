@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using BlazorProducts.Server.Repository;
 using Entities.RequestParameters;
 using Microsoft.AspNetCore.Mvc;
@@ -25,6 +26,14 @@ namespace BlazorProducts.Server.Controllers
 			Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(products.MetaData));
 
 			return Ok(products);
+		}
+
+		[HttpGet("{id}")]
+		public async Task<IActionResult> GetProduct(Guid id)
+		{
+			var product = await _repo.GetProduct(id);
+
+			return Ok(product);
 		}
 	}
 }

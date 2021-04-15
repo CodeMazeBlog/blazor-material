@@ -1,0 +1,34 @@
+﻿@page "/product/{productId:guid}"
+
+<MudGrid>
+	<MudItem md="12" sm="12">
+		<MudText Typo="Typo.h3">@Product.Name</MudText>
+	</MudItem>
+	<MudItem md="12" sm="12">
+		<MudRating SelectedValue="@_currentRating" Size="Size.Medium" FullIcon="@Icons.Filled.ThumbUp"
+				   EmptyIcon="@Icons.Filled.ThumbUpOffAlt" SelectedValueChanged="RatingValueChanged"/> 
+		<MudElement HtmlTag="span" Style="position:relative; top:-8px; color:gray;">
+			(@_reviewCount reviews) | (@_questionCount questions)
+		</MudElement>
+	</MudItem>
+	<MudItem lg="4" md="6" sm="12">
+		<img width="300" src="@Product.ImageUrl" alt="@Product.Name" />
+	</MudItem>
+	<MudItem lg="4" md="6" sm="12">
+		<MudPaper Class="pa-4">
+			<MudText Typo="Typo.h4" Class="mb-4">Price: $@String.Format("{0:0.00}", Product.Price)</MudText>
+			<MudText Typo="Typo.body1">
+				<strong>Manufacture date:</strong> @Product.ManufactureDate.ToShortDateString()
+			</MudText>
+			<MudText Typo="Typo.body1" Class="mb-4"><strong>Supplier: </strong>@Product.Supplier</MudText>
+			<MudIcon Icon="@Icons.Filled.LocalShipping" Size="Size.Large" />
+			<MudElement HtmlTag="span" Style="position:relative; top:-13px; margin-left:5px;">
+				Free shipping for this product.
+			</MudElement>
+			<MudFab Icon="@Icons.Filled.ShoppingCart" Color="Color.Tertiary" 
+					Label="Add to cart" Class="mt-4"/>
+		</MudPaper>
+	</MudItem>
+</MudGrid>
+<AdditionalProductInfo Product="Product" ReviewCount="_reviewCount" QuestionCount="_questionCount" />
+<Charts ProductName="@Product.Name" />

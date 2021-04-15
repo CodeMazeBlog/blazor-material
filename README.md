@@ -1,3 +1,3 @@
-# Blazor Material Table - Server-Side Paging, Searching, Sorting
-## https://code-maze.com/blazor-material-table-paging-searching-sorting
-This repo contains the source code for the "Blazor Material Table - Server-Side Paging, Searching, Sorting" article on Code Maze
+# Using MudBlazor to Create Reach and Functional Product's Details Page
+## https://code-maze.com/using-mudblazor-to-create-product-details-page
+This repo contains the source code for the "Using MudBlazor to Create Reach and Functional Product's Details Page" article on Code Maze

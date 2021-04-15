@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using BlazorProducts.Server.Context;
 using BlazorProducts.Server.Repository;
@@ -13,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace BlazorProducts.Server
 {
@@ -41,7 +43,8 @@ namespace BlazorProducts.Server
 
             services.AddScoped<IProductRepository, ProductRepository>();
 
-            services.AddControllers();
+            services.AddControllers()
+                .AddNewtonsoftJson(s => s.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

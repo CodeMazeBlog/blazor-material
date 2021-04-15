@@ -1,0 +1,30 @@
+﻿@using Entities.Models;
+
+@if (ProductDeclaration != null)
+{
+	<MudGrid>
+		<MudItem lg="3" md="3" sm="12">
+			<MudText Typo="Typo.body2"><strong>Model: </strong></MudText>
+		</MudItem>
+		<MudItem lg="9" md="9" sm="12">
+			<MudText Typo="Typo.body2">@ProductDeclaration.Model</MudText>
+		</MudItem>
+		<MudItem lg="3" md="3" sm="12">
+			<MudText Typo="Typo.body2"><strong>Origin: </strong></MudText>
+		</MudItem>
+		<MudItem lg="9" md="9" sm="12">
+			<MudText Typo="Typo.body2">@ProductDeclaration.Origin</MudText>
+		</MudItem>
+		<MudItem lg="3" md="3" sm="12">
+			<MudText Typo="Typo.body2"><strong>Customer rights: </strong></MudText>
+		</MudItem>
+		<MudItem lg="9" md="9" sm="12">
+			<MudText Typo="Typo.body2">@ProductDeclaration.CustomerRights</MudText>
+		</MudItem>
+	</MudGrid>
+}
+
+@code {
+	[Parameter]
+	public Declaration ProductDeclaration { get; set; }
+}

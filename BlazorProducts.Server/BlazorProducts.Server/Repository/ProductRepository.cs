@@ -4,6 +4,7 @@ using BlazorProducts.Server.Repository.RepositoryExtensions;
 using Entities.Models;
 using Entities.RequestParameters;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Threading.Tasks;
 
 namespace BlazorProducts.Server.Repository
@@ -27,5 +28,12 @@ namespace BlazorProducts.Server.Repository
 			return PagedList<Product>
 				.ToPagedList(products, productParameters.PageNumber, productParameters.PageSize);
 		}
+
+		public async Task<Product> GetProduct(Guid id) =>
+			await _context.Products
+			.Include(r => r.Reviews)
+			.Include(q => q.QAs)
+			.Include(d => d.Declaration)
+			.SingleOrDefaultAsync(p => p.Id.Equals(id));
 	}
 }

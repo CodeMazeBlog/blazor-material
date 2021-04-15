@@ -4,14 +4,16 @@ using BlazorProducts.Server.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BlazorProducts.Server.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    partial class ProductContextModelSnapshot : ModelSnapshot
+    [Migration("20210303111548_AdditionalTables")]
+    partial class AdditionalTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,16 +44,6 @@ namespace BlazorProducts.Server.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("Declaration");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("13feebbc-ab65-4e37-aa39-fcc2ed5e5015"),
-                            CustomerRights = "All customer rights guaranteed under consumer protection law.",
-                            Model = "Case & Skin for Samsung Galaxy G324 149 x 70.4 x 7.8 mm",
-                            Origin = "USA",
-                            ProductId = new Guid("4e693871-788d-4db4-89e5-dd7678db975e")
-                        });
                 });
 
             modelBuilder.Entity("Entities.Models.Product", b =>
@@ -187,32 +179,11 @@ namespace BlazorProducts.Server.Migrations
                     b.Property<string>("Question")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("User")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ProductId");
 
                     b.ToTable("QA");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("94402f9d-f280-4a7d-9c95-13e430065cee"),
-                            Answer = "Hello Mick. Yes, there is a two year guarantee for it.",
-                            ProductId = new Guid("4e693871-788d-4db4-89e5-dd7678db975e"),
-                            Question = "Is there a guarantee for this product",
-                            User = "Mick Simons"
-                        },
-                        new
-                        {
-                            Id = new Guid("06579037-943b-4ce5-8dd6-39f34ad49329"),
-                            Answer = "Hello Brigit. You can order it online on our web shop.",
-                            ProductId = new Guid("4e693871-788d-4db4-89e5-dd7678db975e"),
-                            Question = "How can I get this product",
-                            User = "Brigit Fansey"
-                        });
                 });
 
             modelBuilder.Entity("Entities.Models.Review", b =>
@@ -238,32 +209,6 @@ namespace BlazorProducts.Server.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("Review");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("b4031733-83a6-4d7c-b995-a3a0c0a35c39"),
-                            Comment = "Great product. Fits my phone perfectly.",
-                            ProductId = new Guid("4e693871-788d-4db4-89e5-dd7678db975e"),
-                            Rate = 5,
-                            User = "Tim Malock"
-                        },
-                        new
-                        {
-                            Id = new Guid("f43017fd-1a65-4ad1-8610-ec4154a21c87"),
-                            Comment = "I use it all the time. Excellent stuff.",
-                            ProductId = new Guid("4e693871-788d-4db4-89e5-dd7678db975e"),
-                            Rate = 4,
-                            User = "Ana Swan"
-                        },
-                        new
-                        {
-                            Id = new Guid("b88bc5c2-660d-4604-ba92-69abf546e881"),
-                            Comment = "It could be better, I am not that satisfied.",
-                            ProductId = new Guid("4e693871-788d-4db4-89e5-dd7678db975e"),
-                            Rate = 3,
-                            User = "John Mining"
-                        });
                 });
 
             modelBuilder.Entity("Entities.Models.Declaration", b =>

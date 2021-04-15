@@ -1,0 +1,20 @@
+﻿@using Entities.Models;
+
+<MudGrid Class="mb-4">
+	@foreach (var review in UserReviews)
+	{
+		<MudItem md="3">
+			<MudText Typo="Typo.h4">@review.Rate.ToString(" 0.0 ")</MudText>
+			<MudText Typo="Typo.body2" Class="mt-1 mb-2">@review.User</MudText>
+			<MudProgressLinear Color="Color.Secondary" Value="review.Rate" Min="1" Max="5" />
+		</MudItem>
+		<MudItem md="9">
+			<MudText Typo="Typo.body2" Class="mt-4">@review.Comment</MudText>
+		</MudItem>
+	}
+</MudGrid>
+
+@code {
+	[Parameter]
+	public ICollection<Review> UserReviews { get; set; }
+}

@@ -51,5 +51,21 @@ namespace BlazorMaterialUI.HttpRepository
 				return pagingResponse;
 			}
 		}
+
+		public async Task<Product> GetProduct(Guid id)
+		{
+			var uri = $"products/{id}";
+
+			using (var response = await _client.GetAsync(uri))
+			{
+				response.EnsureSuccessStatusCode();
+
+				var stream = await response.Content.ReadAsStreamAsync();
+
+				var product = await JsonSerializer.DeserializeAsync<Product>(stream, _options);
+
+				return product;
+			}
+		}
 	}
 }

@@ -1,0 +1,40 @@
+﻿<MudGrid>
+	<MudItem lg="8" md="12" sm="12">
+		<MudExpansionPanels Elevation="2">
+			<MudExpansionPanel HideIcon="true">
+				<TitleContent>
+					<div class="d-flex">
+						<MudText Class="mt-1"><strong>User Reviews</strong></MudText>
+						<MudBadge Content="ReviewCount" Color="Color.Primary" Overlap="true" Class="d-flex ml-auto">
+							<MudIcon Icon="@Icons.Material.Filled.RateReview" Color="Color.Default" />
+						</MudBadge>
+					</div>
+				</TitleContent>
+				<ChildContent>
+					<Reviews UserReviews="Product.Reviews" />
+				</ChildContent>
+			</MudExpansionPanel>
+			<MudExpansionPanel HideIcon="true">
+				<TitleContent>
+					<div class="d-flex">
+						<MudText Class="mt-1"><strong>Questions and Answers</strong></MudText>
+						<MudBadge Content="QuestionCount" Color="Color.Primary" Overlap="true" Class="d-flex ml-auto">
+							<MudIcon Icon="@Icons.Material.Filled.QuestionAnswer" Color="Color.Default" />
+						</MudBadge>
+					</div>
+				</TitleContent>
+				<ChildContent>
+					<QuestionsAnswers QAs="Product.QAs" />
+				</ChildContent>
+			</MudExpansionPanel>
+			<MudExpansionPanel>
+				<TitleContent>
+					<MudText Class="mt-1"><strong>Declaration</strong></MudText>
+				</TitleContent>
+				<ChildContent>
+					<Declarations ProductDeclaration="Product.Declaration" />
+				</ChildContent>
+			</MudExpansionPanel>
+		</MudExpansionPanels>
+	</MudItem>
+</MudGrid>
