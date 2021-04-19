@@ -1,0 +1,25 @@
+﻿@page "/createProduct"
+
+<section style="width:600px; margin: 0 auto;">
+	<EditForm Model="_product" OnValidSubmit="Create">
+		<DataAnnotationsValidator />
+		<MudCard>
+			<MudCardContent>
+				<MudTextField Label="Product Name" @bind-Value="_product.Name"
+							  For="@(() => _product.Name)" />
+				<MudTextField Label="Supplier" @bind-Value="_product.Supplier"
+							  For="@(() => _product.Supplier)" />
+				<MudTextField Label="Price" @bind-Value="_product.Price" HelperText="Between 5 and 1000"
+							  Adornment="Adornment.Start" AdornmentIcon="@Icons.Filled.AttachMoney"
+							  InputType="InputType.Number" For="@(() => _product.Price)" />
+				<MudDatePicker Label="Manufacture date" @bind-Date="_date" /> 
+				<br/>
+				<ImageUpload OnChange="SetImgUrl"/>
+			</MudCardContent>
+			<MudCardActions>
+				<MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" 
+						   Class="ml-auto">Create Product</MudButton>
+			</MudCardActions>
+		</MudCard>
+	</EditForm>
+</section>

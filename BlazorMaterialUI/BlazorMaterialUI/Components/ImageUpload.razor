@@ -1,0 +1,14 @@
+﻿<InputFile id="fileInput" OnChange="UploadImage" hidden />
+
+<MudButton HtmlTag="label" Variant="Variant.Filled"
+		   Color="Color.Primary" StartIcon="@Icons.Filled.CloudUpload"
+		   Class="my-3" for="fileInput">
+	Upload Image
+</MudButton>
+
+@if (ImgUrl != null)
+{
+	<div>
+		<img src="@ImgUrl" style="width:300px" />
+	</div>
+}

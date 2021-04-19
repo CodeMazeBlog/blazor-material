@@ -1,3 +1,3 @@
-# Using MudBlazor to Create Reach and Functional Product's Details Page
-## https://code-maze.com/using-mudblazor-to-create-product-details-page
-This repo contains the source code for the "Using MudBlazor to Create Reach and Functional Product's Details Page" article on Code Maze
+# Blazor Material Form Creation with File Upload and Dialogs
+## https://code-maze.com/blazor-material-form-creation-with-file-upload-and-dialogs
+This repo contains the source code for the "Blazor Material Form Creation with File Upload and Dialogs" article on Code Maze

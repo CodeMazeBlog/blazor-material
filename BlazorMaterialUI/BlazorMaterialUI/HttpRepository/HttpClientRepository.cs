@@ -5,8 +5,10 @@ using Entities.RequestParameters;
 using Microsoft.AspNetCore.WebUtilities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -39,7 +41,7 @@ namespace BlazorMaterialUI.HttpRepository
 
 				var metaData = JsonSerializer
 					.Deserialize<MetaData>(response.Headers.GetValues("X-Pagination").First(), _options);
-				
+
 				var stream = await response.Content.ReadAsStreamAsync();
 
 				var pagingResponse = new PagingResponse<Product>
@@ -66,6 +68,19 @@ namespace BlazorMaterialUI.HttpRepository
 
 				return product;
 			}
+		}
+
+		public async Task CreateProduct(Product product)
+			=> await _client.PostAsJsonAsync("products", product);
+
+		public async Task<string> UploadImage(MultipartFormDataContent content)
+		{
+			var postResult = await _client.PostAsync("upload", content);
+			var postContent = await postResult.Content.ReadAsStringAsync();
+
+			var imgUrl = Path.Combine("https://localhost:5011/", postContent);
+			
+			return imgUrl;
 		}
 	}
 }
